@@ -1,13 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class Generador {
 
-    public static List<Integer> generate(int size){
-        List<Integer> list = new ArrayList<>();
-        for(int i = 0; i< size; i++){
-            list.add((int)Math.random()*10);
+    public static int[] generate(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("El tamaño n no puede ser negativo: " + n);
         }
-        return list;
+        int[] datos = new int[n];
+        Random random = new Random();
+        long limiteSuperior = (long) n + 1; 
+        for (int i = 0; i < n; i++) {
+            datos[i] = (int) random.nextLong(limiteSuperior);
+        }
+        return datos;
     }
 }
